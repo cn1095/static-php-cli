@@ -19,14 +19,12 @@ trait pkgconfig
                 '--build=x86_64  ' .
                 '--disable-shared ' .
                 '--enable-static ' .
-                '--with-internal-glib ' .
                 '--disable-host-tool ' .
                 '--with-pic ' .
                 '--prefix=' . BUILD_ROOT_PATH . ' ' .
                 '--without-sysroot ' .
                 '--without-system-include-path ' .
                 '--without-system-library-path ' .
-                '--disable-glibtest ' .
                 '--without-pc-path'
             )
             ->exec('make clean')
