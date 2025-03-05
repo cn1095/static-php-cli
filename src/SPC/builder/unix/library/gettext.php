@@ -20,6 +20,7 @@ trait gettext
             ->setEnv(['CFLAGS' => $this->getLibExtraCFlags() ?: $cflags, 'LDFLAGS' => $this->getLibExtraLdFlags() ?: $ldflags, 'LIBS' => $this->getLibExtraLibs()])
             ->execWithEnv(
                 './configure ' .
+                '--host=mipsel-linux-muslsf  ' .
                 '--enable-static ' .
                 '--disable-shared ' .
                 '--disable-java ' .
