@@ -32,6 +32,7 @@ trait libxslt
                 'LDFLAGS="-L' . BUILD_LIB_PATH . '" ' .
                 "LIBS='{$required_libs} -lstdc++' " .
                 './configure ' .
+                '--host=mipsel-linux-muslsf  ' .
                 '--enable-static --disable-shared ' .
                 '--without-python ' .
                 '--without-mem-debug ' .
