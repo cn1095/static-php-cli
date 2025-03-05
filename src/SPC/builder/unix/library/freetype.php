@@ -30,6 +30,7 @@ trait freetype
             ->exec('sh autogen.sh')
             ->execWithEnv(
                 './configure ' .
+                '--host=mipsel-linux-muslsf  ' .
                 '--enable-static --disable-shared --without-harfbuzz --prefix= ' .
                 $suggested
             )
