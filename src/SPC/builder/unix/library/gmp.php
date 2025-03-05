@@ -19,6 +19,7 @@ trait gmp
             ->setEnv(['CFLAGS' => $this->getLibExtraCFlags(), 'LDFLAGS' => $this->getLibExtraLdFlags(), 'LIBS' => $this->getLibExtraLibs()])
             ->execWithEnv(
                 './configure ' .
+                '--host=mipsel-linux-muslsf  ' .
                 '--enable-static --disable-shared ' .
                 '--prefix='
             )
