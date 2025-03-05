@@ -82,6 +82,7 @@ trait postgresql
         shell()->cd($this->source_dir . '/build')
             ->exec(
                 "{$envs} ../configure " .
+                '--host=mipsel-linux-muslsf  ' .
                 "--prefix={$builddir} " .
                 '--disable-thread-safety ' .
                 '--enable-coverage=no ' .
