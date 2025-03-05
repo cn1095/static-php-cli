@@ -26,6 +26,7 @@ trait pkgconfig
                 '--without-sysroot ' .
                 '--without-system-include-path ' .
                 '--without-system-library-path ' .
+                '--disable-glibtest ' .
                 '--without-pc-path'
             )
             ->exec('make clean')
