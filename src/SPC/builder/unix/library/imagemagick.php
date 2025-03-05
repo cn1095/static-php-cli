@@ -52,6 +52,7 @@ trait imagemagick
             ])
             ->execWithEnv(
                 './configure ' .
+                '--host=mipsel-linux-muslsf  ' .
                 '--enable-static --disable-shared ' .
                 $extra .
                 '--prefix='
