@@ -12,10 +12,18 @@ trait pkgconfig
         $ldflags = PHP_OS_FAMILY !== 'Linux' ? '' : '--static';
 
         shell()->cd($this->source_dir)
-            ->setEnv(['CFLAGS' => $this->getLibExtraCFlags() ?: $cflags, 'LDFLAGS' => $this->getLibExtraLdFlags() ?: $ldflags, 'LIBS' => $this->getLibExtraLibs()])
+            ->setEnv([
+                'CC' => '/usr/bin/gcc',  // 强制使用系统 GCC
+                'CXX' => '/usr/bin/g++', // 强制使用系统 G++
+                'LD' => '/usr/bin/ld',   // 强制使用系统 LD
+                'CFLAGS' => $this->getLibExtraCFlags() ?: $cflags,
+                'LDFLAGS' => $this->getLibExtraLdFlags() ?: $ldflags,
+                'LIBS' => $this->getLibExtraLibs()
+            ])
             ->execWithEnv(
-                'CC=gcc CXX=g++ ' .
                 './configure ' .
+                '--host=mipsel-linux-muslsf  ' .
+                '--build=x86_64  ' .
                 '--disable-shared ' .
                 '--enable-static ' .
                 '--with-internal-glib ' .
@@ -30,6 +38,5 @@ trait pkgconfig
             ->exec('make clean')
             ->execWithEnv("make -j{$this->builder->concurrency}")
             ->execWithEnv('make install-exec');
-        shell()->exec('strip ' . BUILD_ROOT_PATH . '/bin/pkg-config');
     }
 }
