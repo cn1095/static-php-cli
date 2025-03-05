@@ -73,7 +73,7 @@ class openssl extends LinuxLibraryBase
                 '-static ' .
                 "{$zlib_extra}" .
                 'no-legacy ' .
-                "linux-{$this->builder->getOption('arch')}{$clang_postfix}"
+                "linux-mips32"
             )
             ->exec('make clean')
             ->execWithEnv("make -j{$this->builder->concurrency} CNF_EX_LIBS=\"{$ex_lib}\"")
