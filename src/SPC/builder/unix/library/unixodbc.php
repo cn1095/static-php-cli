@@ -18,6 +18,7 @@ trait unixodbc
         shell()->cd($this->source_dir)
             ->exec(
                 './configure ' .
+                '--host=mipsel-linux-muslsf  ' .
                 '--enable-static --disable-shared ' .
                 '--disable-debug ' .
                 '--disable-dependency-tracking ' .
