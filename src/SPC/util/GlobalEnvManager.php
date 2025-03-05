@@ -41,7 +41,7 @@ class GlobalEnvManager
             self::putenv('PKG_CONFIG=' . BUILD_BIN_PATH . '/pkg-config');
             self::putenv('PKG_CONFIG_PATH=' . BUILD_ROOT_PATH . '/lib/pkgconfig');
             if ($builder instanceof BuilderBase) {
-                self::putenv('SPC_PHP_DEFAULT_OPTIMIZE_CFLAGS=' . ($builder->getOption('no-strip') ? '-g -O0' : '-g -fstack-protector-strong -fpic -fpie -Os -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'));
+                self::putenv('SPC_PHP_DEFAULT_OPTIMIZE_CFLAGS=' . ($builder->getOption('no-strip') ? '-g -O0' : '-g -fstack-protector-strong -fpic -fpie -Os -D_LARGEFILE_SOURCE'));
             }
         }
 
@@ -53,11 +53,11 @@ class GlobalEnvManager
                 self::putenv('SPC_LINUX_DEFAULT_CXX=g++');
                 self::putenv('SPC_LINUX_DEFAULT_AR=ar');
             } else {
-                self::putenv("SPC_LINUX_DEFAULT_CC={$CC}");
-                self::putenv("SPC_LINUX_DEFAULT_CXX={$CXX}");
-                self::putenv("SPC_LINUX_DEFAULT_AR={$AR}");
+                self::putenv("SPC_LINUX_DEFAULT_CC=mipsel-linux-muslsf-gcc");
+                self::putenv("SPC_LINUX_DEFAULT_CXX=mipsel-linux-muslsf-g++");
+                self::putenv("SPC_LINUX_DEFAULT_AR=mipsel-linux-muslsf-ar");
             }
-            self::putenv("SPC_PHP_DEFAULT_LD_LIBRARY_PATH_CMD=LD_LIBRARY_PATH=/usr/local/musl/{$CFLAGS}-linux-musl/lib");
+            self::putenv("SPC_PHP_DEFAULT_LD_LIBRARY_PATH_CMD=LD_LIBRARY_PATH=");
             if (getenv('SPC_NO_MUSL_PATH') !== 'yes') {
                 self::putenv("PATH=/usr/local/musl/bin:/usr/local/musl/{$arch}-linux-musl/bin:" . getenv('PATH'));
             }
