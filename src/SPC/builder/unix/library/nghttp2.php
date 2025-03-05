@@ -38,6 +38,7 @@ trait nghttp2
         shell()->cd($this->source_dir)
             ->exec(
                 './configure ' .
+                '--host=mipsel-linux-muslsf  ' .
                 '--enable-static ' .
                 '--disable-shared ' .
                 '--enable-lib-only ' .
