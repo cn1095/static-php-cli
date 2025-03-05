@@ -19,6 +19,7 @@ trait pkgconfig
                 '--build=x86_64  ' .
                 '--disable-shared ' .
                 '--enable-static ' .
+                '--with-internal-glib ' .
                 '--disable-host-tool ' .
                 '--with-pic ' .
                 '--prefix=' . BUILD_ROOT_PATH . ' ' .
