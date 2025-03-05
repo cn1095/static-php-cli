@@ -18,6 +18,7 @@ trait xz
         shell()->cd($this->source_dir)
             ->exec(
                 './configure ' .
+                '--host=mipsel-linux-muslsf  ' .
                 '--enable-static ' .
                 '--disable-shared ' .
                 '--disable-scripts ' .
