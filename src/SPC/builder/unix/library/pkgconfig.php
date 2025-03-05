@@ -14,6 +14,7 @@ trait pkgconfig
         shell()->cd($this->source_dir)
             ->setEnv(['CFLAGS' => $this->getLibExtraCFlags() ?: $cflags, 'LDFLAGS' => $this->getLibExtraLdFlags() ?: $ldflags, 'LIBS' => $this->getLibExtraLibs()])
             ->execWithEnv(
+                'CC=gcc CXX=g++ ' .
                 './configure ' .
                 '--disable-shared ' .
                 '--enable-static ' .
