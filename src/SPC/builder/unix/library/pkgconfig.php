@@ -17,6 +17,7 @@ trait pkgconfig
                 './configure ' .
                 '--host=mipsel-linux-muslsf  ' .
                 '--build==x86_64  ' .
+                '--with-internal-glib=no  ' .
                 '--disable-shared ' .
                 '--enable-static ' .
                 '--with-internal-glib ' .
