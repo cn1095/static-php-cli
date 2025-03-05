@@ -35,6 +35,7 @@ trait ldap
             ->execWithEnv(
                 $this->builder->makeAutoconfFlags(AUTOCONF_CPPFLAGS) .
                 ' ./configure ' .
+                '--host=mipsel-linux-muslsf  ' .
                 '--enable-static ' .
                 '--disable-shared ' .
                 '--disable-slapd ' .
