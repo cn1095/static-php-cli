@@ -22,8 +22,6 @@ trait pkgconfig
             ])
             ->execWithEnv(
                 './configure ' .
-                '--host=mipsel-linux-muslsf  ' .
-                '--build=x86_64  ' .
                 '--disable-shared ' .
                 '--enable-static ' .
                 '--with-internal-glib ' .
