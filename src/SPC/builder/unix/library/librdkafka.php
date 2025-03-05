@@ -22,6 +22,7 @@ trait librdkafka
             ->exec(
                 $zstd_option .
                 './configure ' .
+                '--host=mipsel-linux-muslsf  ' .
                 '--enable-static --disable-shared --disable-curl --disable-sasl --disable-valgrind --disable-zlib --disable-ssl ' .
                 ($zstd_option == '' ? '--disable-zstd ' : '') .
                 '--prefix='
