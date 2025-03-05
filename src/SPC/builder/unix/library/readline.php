@@ -18,6 +18,7 @@ trait readline
         shell()->cd($this->source_dir)
             ->exec(
                 './configure ' .
+                '--host=mipsel-linux-muslsf  ' .
                 '--enable-static=yes ' .
                 '--enable-shared=no ' .
                 '--prefix= ' .
