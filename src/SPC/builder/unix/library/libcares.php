@@ -26,7 +26,7 @@ trait libcares
     {
         shell()->cd($this->source_dir)
             ->setEnv(['CFLAGS' => $this->getLibExtraCFlags(), 'LDFLAGS' => $this->getLibExtraLdFlags(), 'LIBS' => $this->getLibExtraLibs()])
-            ->execWithEnv('./configure --prefix= --enable-static --disable-shared --disable-tests')
+            ->execWithEnv('./configure --host=mipsel-linux-muslsf --prefix= --enable-static --disable-shared --disable-tests')
             ->execWithEnv("make -j {$this->builder->concurrency}")
             ->exec('make install DESTDIR=' . BUILD_ROOT_PATH);
 
