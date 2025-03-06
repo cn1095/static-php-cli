@@ -47,6 +47,7 @@ class libpng extends LinuxLibraryBase
             ->exec(
                 'LDFLAGS="-L' . BUILD_LIB_PATH . '" ' .
                 './configure ' .
+                '--host=mipsel-linux-muslsf ' .
                 '--disable-shared ' .
                 '--enable-static ' .
                 '--enable-hardware-optimizations ' .
