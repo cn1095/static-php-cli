@@ -17,7 +17,7 @@ class icu extends LinuxLibraryBase
         // 本机编译环境
         $native_cc = 'CC=gcc';
         $native_cxx = 'CXX=g++';
-        $native_ld = 'LD=ld';
+        $native_ld = 'LD=ld.gold';
         $native_ar = 'AR=ar';
         $native_cflags = 'CFLAGS="-O2 -fPIC"';
         $native_cxxflags = 'CXXFLAGS="-O2 -fPIC -std=c++17"';
