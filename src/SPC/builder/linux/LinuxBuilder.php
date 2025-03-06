@@ -259,10 +259,10 @@ class LinuxBuilder extends UnixBuilderBase
 
         shell()->cd(SOURCE_PATH . '/php-src')
             ->exec('sed -i "s|//lib|/lib|g" Makefile')
-            ->exec('sed -i "/#include <stdint.h>/i #include <elf.h>" php_micro_fileinfo.c')
-            ->exec('sed -i "/#if defined(__LP64__)/,/#else/ { /#if defined(__LP64__)/d; /typedef Elf64_/s/64/32/g; /#define ELFCLASS/s/64/32/g; }" php_micro_fileinfo.c')
-            ->exec('sed -i "/#if defined(__LP64__)/,/#endif/ d" php_micro_fileinfo.c')
-            ->exec('sed -i "/#if defined(__APPLE__)/,/#endif/ { s/mach_header_64/mach_header/g; s/segment_command_64/segment_command/g; s/MH_MAGIC_64/MH_MAGIC/g; s/LC_SEGMENT_64/LC_SEGMENT/g; }" php_micro_fileinfo.c')
+            ->exec('find . -type f -name "php_micro_fileinfo.c" -exec sed -i "/#include <stdint.h>/i #include <elf.h>" {} +')
+            ->exec('find . -type f -name "php_micro_fileinfo.c" -exec sed -i "/#if defined(__LP64__)/,/#else/ { /#if defined(__LP64__)/d; /typedef Elf64_/s/64/32/g; /#define ELFCLASS/s/64/32/g; }" {} +')
+            ->exec('find . -type f -name "php_micro_fileinfo.c" -exec sed -i "/#if defined(__LP64__)/,/#endif/ d" {} +')
+            ->exec('find . -type f -name "php_micro_fileinfo.c" -exec sed -i "/#if defined(__APPLE__)/,/#endif/ { s/mach_header_64/mach_header/g; s/segment_command_64/segment_command/g; s/MH_MAGIC_64/MH_MAGIC/g; s/LC_SEGMENT_64/LC_SEGMENT/g; }" {} +')
             ->exec("\$SPC_CMD_PREFIX_PHP_MAKE {$vars} micro");
 
         $this->processMicroUPX();
