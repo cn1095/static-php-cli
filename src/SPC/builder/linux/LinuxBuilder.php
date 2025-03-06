@@ -260,10 +260,12 @@ class LinuxBuilder extends UnixBuilderBase
         shell()->cd(SOURCE_PATH . '/php-src')
             ->exec('sed -i "s|//lib|/lib|g" Makefile')
             ->exec('find . -type f -name "php_micro_fileinfo.c" -exec sh -c \'
-                sed -i "/#include <stdint.h>/i #include <elf.h>" "$1";
-                sed -i "/#if defined(__LP64__)/,/#else/ { /#if defined(__LP64__)/d; /typedef Elf64_/s/64/32/g; /#define ELFCLASS/s/64/32/g; }" "$1";
-                sed -i "/#if defined(__LP64__)/,/#endif/ d" "$1";
-                sed -i "/#if defined(__APPLE__)/,/#endif/ { s/mach_header_64/mach_header/g; s/segment_command_64/segment_command/g; s/MH_MAGIC_64/MH_MAGIC/g; s/LC_SEGMENT_64/LC_SEGMENT/g; }" "$1"
+                file="$1"
+                sed -i "/#include <stdint.h>/i #include <elf.h>" "$file"
+                sed -i "/#if defined(__LP64__)/,/#else/ { /#if defined(__LP64__)/d; s/Elf64_/Elf32_/g; s/#define ELFCLASS ELFCLASS64/#define ELFCLASS ELFCLASS32/; }" "$file"
+                sed -i "/#if defined(__LP64__)/,/#endif/ d" "$file"
+                sed -i "/typedef Elf_Phdr/ i typedef Elf32_Shdr Elf_Shdr;" "$file"
+                sed -i "/#if defined(__APPLE__)/,/#endif/ { s/mach_header_64/mach_header/g; s/segment_command_64/segment_command/g; s/MH_MAGIC_64/MH_MAGIC/g; s/LC_SEGMENT_64/LC_SEGMENT/g; }" "$file"
             \' sh {} +')
             ->exec("\$SPC_CMD_PREFIX_PHP_MAKE {$vars} micro");
 
