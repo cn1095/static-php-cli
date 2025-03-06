@@ -34,12 +34,17 @@ class icu extends LinuxLibraryBase
                 '--disable-shared ' .
                 '--with-data-packaging=static ' .
                 '--enable-release=yes ' .
+                '--enable-extras=no ' .
                 '--enable-icuio=yes ' .
-                '--enable-tools=yes ' 
+                '--enable-dyload=no ' .
+                '--enable-tools=yes ' .
+                '--enable-tests=no ' .
+                '--enable-samples=no'
             )
             ->exec('make clean')
             ->exec("make -j{$this->builder->concurrency}")
             ->exec('make install')
+            ->exec('ls')
             ->exec('cp -r config ' . BUILD_ROOT_PATH . '/native-icu');
         
         // 交叉编译环境
