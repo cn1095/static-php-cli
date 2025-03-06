@@ -267,7 +267,7 @@ class LinuxBuilder extends UnixBuilderBase
                 sed -i "/typedef Elf_Phdr/ i typedef Elf32_Shdr Elf_Shdr;" "$file"
                 sed -i "/#if defined(__APPLE__)/,/#endif/ { s/mach_header_64/mach_header/g; s/segment_command_64/segment_command/g; s/MH_MAGIC_64/MH_MAGIC/g; s/LC_SEGMENT_64/LC_SEGMENT/g; }" "$file"
             \' sh {} +')
-            ->exec("\$SPC_CMD_PREFIX_PHP_MAKE {$vars} micro");
+            ->exec("export CFLAGS='-D__ILP32__' && \$SPC_CMD_PREFIX_PHP_MAKE {$vars} micro");
 
         $this->processMicroUPX();
 
