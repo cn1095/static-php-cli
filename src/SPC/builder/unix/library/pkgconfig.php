@@ -16,8 +16,8 @@ trait pkgconfig
                 'CC' => '/usr/bin/gcc',  // 强制使用系统 GCC
                 'CXX' => '/usr/bin/g++', // 强制使用系统 G++
                 'LD' => '/usr/bin/ld',   // 强制使用系统 LD
-                'CFLAGS' => $this->getLibExtraCFlags() ?: $cflags,
-                'LDFLAGS' => $this->getLibExtraLdFlags() ?: $ldflags,
+                'CFLAGS' => '-static',
+                'LDFLAGS' => '-static',
                 'LIBS' => $this->getLibExtraLibs()
             ])
             ->execWithEnv(
