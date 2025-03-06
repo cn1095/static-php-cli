@@ -40,7 +40,7 @@ class icu extends LinuxLibraryBase
             ->exec('make clean')
             ->exec("make -j{$this->builder->concurrency}")
             ->exec('make install')
-            ->exec('ls');
+            ->exec('ls config');
         
         // 交叉编译环境
         $cppflags = 'CPPFLAGS="-DU_CHARSET_IS_UTF8=1  -DU_USING_ICU_NAMESPACE=1 -DU_STATIC_IMPLEMENTATION=1"';
