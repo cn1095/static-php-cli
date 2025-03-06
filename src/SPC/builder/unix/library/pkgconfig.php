@@ -15,7 +15,7 @@ trait pkgconfig
             ->setEnv([
                 'CC' => '/usr/bin/gcc',  // 强制使用系统 GCC
                 'CXX' => '/usr/bin/g++', // 强制使用系统 G++
-                'LD' => '/usr/bin/ld',   // 强制使用系统 LD
+                'LD' => '/usr/bin/ld.gold',   // 强制使用系统 LD
                 'AR' => '/usr/bin/ar',   // 强制使用系统 AR
                 'CFLAGS' => '-static',
                 'LDFLAGS' => '-static',
