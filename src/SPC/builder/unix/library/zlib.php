@@ -18,7 +18,7 @@ trait zlib
         [,,$destdir] = SEPARATED_PATH;
 
         shell()->cd($this->source_dir)
-            ->exec('./configure --host=mipsel-linux-muslsf --static --prefix=')
+            ->exec('./configure --static --prefix=')
             ->exec('make clean')
             ->exec("make -j{$this->builder->concurrency}")
             ->exec("make install DESTDIR={$destdir}");
