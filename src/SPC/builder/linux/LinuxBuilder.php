@@ -259,6 +259,7 @@ class LinuxBuilder extends UnixBuilderBase
 
         shell()->cd(SOURCE_PATH . '/php-src')
             ->exec('sed -i "s|//lib|/lib|g" Makefile')
+            ->exec('sed -i "/#include <stdint.h>/i #include <elf.h>" php_micro_fileinfo.c')
             ->exec("\$SPC_CMD_PREFIX_PHP_MAKE {$vars} micro");
 
         $this->processMicroUPX();
