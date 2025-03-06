@@ -34,16 +34,13 @@ class icu extends LinuxLibraryBase
                 '--disable-shared ' .
                 '--with-data-packaging=static ' .
                 '--enable-release=yes ' .
-                '--enable-extras=no ' .
                 '--enable-icuio=yes ' .
-                '--enable-dyload=no ' .
-                '--enable-tools=yes ' .
-                '--enable-tests=no ' .
-                '--enable-samples=no'
+                '--enable-tools=yes ' 
             )
             ->exec('make clean')
             ->exec("make -j{$this->builder->concurrency}")
-            ->exec('make install');
+            ->exec('make install')
+            ->exec('ls');
         
         // 交叉编译环境
         $cppflags = 'CPPFLAGS="-DU_CHARSET_IS_UTF8=1  -DU_USING_ICU_NAMESPACE=1 -DU_STATIC_IMPLEMENTATION=1"';
