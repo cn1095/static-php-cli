@@ -45,6 +45,7 @@ class icu extends LinuxLibraryBase
             ->exec("make -j{$this->builder->concurrency}")
             ->exec('make install')
             ->exec('ls')
+            ->exec('cp -r bin ' . BUILD_ROOT_PATH . '/native-icu')
             ->exec('cp -r config ' . BUILD_ROOT_PATH . '/native-icu');
         
         // 交叉编译环境
