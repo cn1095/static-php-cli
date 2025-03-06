@@ -21,6 +21,7 @@ class icu extends LinuxLibraryBase
             ->exec(
                 "{$cppflags} {$cxxflags} {$ldflags} " .
                 './runConfigureICU Linux ' .
+                '--host=mipsel-linux-muslsf ' .
                 '--enable-static ' .
                 '--disable-shared ' .
                 '--with-data-packaging=static ' .
